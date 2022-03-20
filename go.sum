@@ -1,0 +1,8 @@
+github.com/bxcodec/faker/v3 v3.8.0 h1:F59Qqnsh0BOtZRC+c4cXoB/VNYDMS3R5mlSpxIap1oU=
+github.com/bxcodec/faker/v3 v3.8.0/go.mod h1:gF31YgnMSMKgkvl+fyEo1xuSMbEuieyqfeslGYFjneM=
+github.com/jabolopes/go-maths v0.0.0-20220325190439-76acb00fc555 h1:VKyb1kp5ywPnuqUMECtPWUPOclAcsUydJqqSLbl2k/U=
+github.com/jabolopes/go-maths v0.0.0-20220325190439-76acb00fc555/go.mod h1:QaUBs9nWB5n08epeVrOdtawFNDCZXxMKEP0mITI03vg=
+golang.org/x/exp v0.0.0-20220318154914-8dddf5d87bd8 h1:s/+U+w0teGzcoH2mdIlFQ6KfVKGaYpgyGdUefZrn9TU=
+golang.org/x/exp v0.0.0-20220318154914-8dddf5d87bd8/go.mod h1:lgLbSvA5ygNOMpwM/9anMpWVlVJ7Z+cHWq/eFuinpGE=
+golang.org/x/exp v0.0.0-20220324144552-032f0433de08 h1:vIbwaEfJJbhnNBXheW3XA8IAi3Ufb0cCBG6nj3UMRnc=
+golang.org/x/exp v0.0.0-20220324144552-032f0433de08/go.mod h1:lgLbSvA5ygNOMpwM/9anMpWVlVJ7Z+cHWq/eFuinpGE=
