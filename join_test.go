@@ -159,7 +159,7 @@ func TestJoin_RemoveRandomValues(t *testing.T) {
 	}
 }
 
-func TestJoin_BothSetsEmpty(t *testing.T) {
+func TestJoin_AllSetsEmpty(t *testing.T) {
 	set1 := sparseset.New[string](4096, 1<<20)
 	set2 := sparseset.New[int](4096, 1<<20)
 
