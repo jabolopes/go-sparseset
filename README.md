@@ -1,5 +1,7 @@
 # go-sparseset
 
+[![PkgGoDev](https://pkg.go.dev/badge/github.com/jabolopes/go-sparseset)](https://pkg.go.dev/github.com/jabolopes/go-sparseset)
+
 This library provides an implementation of [sparse
 sets](https://dl.acm.org/doi/10.1145/176454.176484) and utilities to operate on
 sparse sets, including, efficient traversal, joining, sorting, etc.
