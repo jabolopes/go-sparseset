@@ -49,3 +49,9 @@ func Join[A, B any](set1 *Set[A], set2 *Set[B]) *JoinIterator[A, B] {
 
 	return &JoinIterator[A, B]{get}
 }
+
+func EmptyJoinIterator[A, B any]() *JoinIterator[A, B] {
+	return &JoinIterator[A, B]{func() (int, *A, *B, bool) {
+		return 0, nil, nil, false
+	}}
+}

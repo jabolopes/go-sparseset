@@ -81,3 +81,9 @@ func Join3[A, B, C any](set1 *Set[A], set2 *Set[B], set3 *Set[C]) *Join3Iterator
 
 	return &Join3Iterator[A, B, C]{get}
 }
+
+func EmptyJoin3Iterator[A, B, C any]() *Join3Iterator[A, B, C] {
+	return &Join3Iterator[A, B, C]{func() (int, *A, *B, *C, bool) {
+		return 0, nil, nil, nil, false
+	}}
+}

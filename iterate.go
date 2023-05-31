@@ -62,3 +62,7 @@ func Iterate[A any](set *Set[A]) *Iterator[A] {
 
 	return &Iterator[A]{get, 0}
 }
+
+func EmptyIterator[A any]() *Iterator[A] {
+	return &Iterator[A]{func(int) (int, *A, bool) { return 0, nil, false }, 0}
+}
