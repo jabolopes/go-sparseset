@@ -1,6 +1,7 @@
 package sparseset_test
 
 import (
+	"cmp"
 	"math/rand"
 	"testing"
 
@@ -26,9 +27,9 @@ func TestSort(t *testing.T) {
 	}
 
 	want := iterateAll(sparseset.Iterate(set))
-	slices.SortStableFunc(want, func(x, y iterateResult[string]) bool { return x.a < y.a })
+	slices.SortStableFunc(want, func(x, y iterateResult[string]) int { return cmp.Compare(x.a, y.a) })
 
-	sparseset.SortStableFunc(set, func(keyA int, a *string, keyB int, b *string) bool {
+	sparseset.SortStableFunc(set, func(keyA int, a *string, keyB int, b *string) int {
 		if want := data[keyA]; *a != want {
 			t.Errorf("a = %v; want %v", *a, want)
 		}
@@ -37,7 +38,7 @@ func TestSort(t *testing.T) {
 			t.Errorf("a = %v; want %v", *b, want)
 		}
 
-		return *a < *b
+		return cmp.Compare(*a, *b)
 	})
 
 	if got := iterateAll(sparseset.Iterate(set)); !slices.Equal(got, want) {
@@ -48,9 +49,9 @@ func TestSort(t *testing.T) {
 func TestSort_EmptySet(t *testing.T) {
 	set := sparseset.New[string](4096, 1<<20)
 
-	sparseset.SortStableFunc(set, func(_ int, a *string, _ int, b *string) bool {
+	sparseset.SortStableFunc(set, func(_ int, a *string, _ int, b *string) int {
 		t.Fatalf("compare() called")
-		return false
+		return 0
 	})
 
 	want := []iterateResult[string]{}

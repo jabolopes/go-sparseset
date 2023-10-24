@@ -1,6 +1,7 @@
 package sparseset_test
 
 import (
+	"cmp"
 	"fmt"
 	"math/rand"
 	"testing"
@@ -101,8 +102,8 @@ func TestIterate_RemoveRandomValues(t *testing.T) {
 
 		got := iterateAll(sparseset.Iterate(set))
 
-		slices.SortFunc(want, func(r1, r2 iterateResult[string]) bool { return r1.key < r2.key })
-		slices.SortFunc(got, func(r1, r2 iterateResult[string]) bool { return r1.key < r2.key })
+		slices.SortFunc(want, func(r1, r2 iterateResult[string]) int { return cmp.Compare(r1.key, r2.key) })
+		slices.SortFunc(got, func(r1, r2 iterateResult[string]) int { return cmp.Compare(r1.key, r2.key) })
 
 		if !slices.Equal(got, want) {
 			t.Errorf("results = %v; want %v", got, want)
@@ -120,8 +121,8 @@ func TestIterate_RemoveRandomValues(t *testing.T) {
 
 		got := sparseset.Iterate(set).Collect()
 
-		slices.SortFunc(want, func(r1, r2 sparseset.IteratorResult[string]) bool { return r1.Key < r2.Key })
-		slices.SortFunc(got, func(r1, r2 sparseset.IteratorResult[string]) bool { return r1.Key < r2.Key })
+		slices.SortFunc(want, func(r1, r2 sparseset.IteratorResult[string]) int { return cmp.Compare(r1.Key, r2.Key) })
+		slices.SortFunc(got, func(r1, r2 sparseset.IteratorResult[string]) int { return cmp.Compare(r1.Key, r2.Key) })
 
 		if !slices.Equal(got, want) {
 			t.Errorf("results = %v\nwant %v", got, want)

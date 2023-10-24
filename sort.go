@@ -8,8 +8,8 @@ import (
 // receives the 'left-hand-side' ID and Value and the 'right-hand-side' ID and
 // Value. The 'compare' function should call methods on the Set (e.g.,
 // Set.Get()) since SortStableFunc modifies the Set.
-func SortStableFunc[T any](set *Set[T], compare func(int, *T, int, *T) bool) {
-	slices.SortStableFunc(set.dense, func(i, j int) bool {
+func SortStableFunc[T any](set *Set[T], compare func(int, *T, int, *T) int) {
+	slices.SortStableFunc(set.dense, func(i, j int) int {
 		iPos := set.index.Get(i)
 		jPos := set.index.Get(j)
 		return compare(i, &set.store[iPos], j, &set.store[jPos])

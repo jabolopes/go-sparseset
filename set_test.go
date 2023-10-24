@@ -1,6 +1,7 @@
 package sparseset_test
 
 import (
+	"cmp"
 	"fmt"
 	"reflect"
 	"testing"
@@ -256,8 +257,8 @@ func TestAddRemove_Sequence(t *testing.T) {
 		}
 
 		got := append([]MyValue{}, set.Values()...)
-		slices.SortFunc(got, func(i, j MyValue) bool { return i.value < j.value })
-		slices.SortFunc(wantValues, func(i, j MyValue) bool { return i.value < j.value })
+		slices.SortFunc(got, func(i, j MyValue) int { return cmp.Compare(i.value, j.value) })
+		slices.SortFunc(wantValues, func(i, j MyValue) int { return cmp.Compare(i.value, j.value) })
 		if !slices.Equal(got, wantValues) {
 			t.Errorf("Values() = %v; want %v", got, wantValues)
 		}

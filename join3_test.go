@@ -1,6 +1,7 @@
 package sparseset_test
 
 import (
+	"cmp"
 	"fmt"
 	"math/rand"
 	"testing"
@@ -177,8 +178,8 @@ func TestJoin3_RemoveRandomValues(t *testing.T) {
 
 	got := join3All(sparseset.Join3(set1, set2, set3))
 
-	slices.SortFunc(want, func(r1, r2 join3Result[string, int, float32]) bool { return r1.key < r2.key })
-	slices.SortFunc(got, func(r1, r2 join3Result[string, int, float32]) bool { return r1.key < r2.key })
+	slices.SortFunc(want, func(r1, r2 join3Result[string, int, float32]) int { return cmp.Compare(r1.key, r2.key) })
+	slices.SortFunc(got, func(r1, r2 join3Result[string, int, float32]) int { return cmp.Compare(r1.key, r2.key) })
 
 	if !slices.Equal(got, want) {
 		t.Errorf("results = %v; want %v", got, want)
