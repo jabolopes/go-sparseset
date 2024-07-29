@@ -71,10 +71,10 @@ func TestAdd(t *testing.T) {
 	set := sparseset.New[MyValue](pageSize, nullValue)
 
 	value := set.Add(10)
-	value.value = 10
 	if value == nil {
-		t.Errorf("Add(10) = %v; want non-%v", value, nil)
+		t.Fatalf("Add(10) = %v; want non-%v", value, nil)
 	}
+	value.value = 10
 
 	if got := set.Length(); got != 1 {
 		t.Errorf("Length() = %d; want %d", got, 1)

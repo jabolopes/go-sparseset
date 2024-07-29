@@ -115,7 +115,7 @@ func TestSet_Rand(t *testing.T) {
 
 	array.Clear()
 
-	for index, _ := range set {
+	for index := range set {
 		if got := array.Get(index); got != nullValue {
 			t.Errorf("Get(%d) = %v; want %v", index, got, nullValue)
 		}
@@ -153,7 +153,7 @@ func TestUnset_Rand(t *testing.T) {
 
 	{
 		i := 0
-		for index, _ := range set {
+		for index := range set {
 			if i%2 == 0 {
 				unset[index] = struct{}{}
 				array.Unset(index)
@@ -186,7 +186,7 @@ func TestUnset_Rand(t *testing.T) {
 
 	array.Clear()
 
-	for index, _ := range set {
+	for index := range set {
 		if got := array.Get(index); got != nullValue {
 			t.Errorf("Get(%d) = %v; want %v", index, got, nullValue)
 		}
